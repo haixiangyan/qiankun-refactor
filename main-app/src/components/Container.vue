@@ -1,5 +1,6 @@
 <template>
 <div class="container" :style="{ height: visible ? '100%' : 0 }">
+  <a-spin v-if="loading"></a-spin>
   <div id="micro-app-container"></div>
   <!--   测试 Drawer 和 Modal     -->
   <div>
@@ -41,7 +42,7 @@
 <script>
 import {initGlobalState, registerMicroApps, start} from 'qiankun'
 // 测试
-import { Button, Drawer, Modal } from 'ant-design-vue'
+import { Button, Drawer, Modal, Spin } from 'ant-design-vue'
 
 export const microAppPrefix = 'micro-react-app';
 
@@ -61,13 +62,13 @@ export default {
   },
   data() {
     return {
+      loading: true,
       drawerVisible: false,
       modalVisible: false,
     }
   },
   mounted() {
     const { dispatch, commit, state } = this.$store;
-    console.log('xx', state);
     registerMicroApps([
       {
         name: 'microReactApp',
@@ -78,6 +79,9 @@ export default {
           state,
           dispatch,
           commit,
+        },
+        loader: (loading) => {
+          this.loading = loading
         }
       },
     ])
@@ -93,6 +97,7 @@ export default {
     })
   },
   components: {
+    'a-spin': Spin,
     'a-button': Button,
     'a-drawer': Drawer,
     'a-modal': Modal,

@@ -1,11 +1,47 @@
 <template>
 <div class="container" :style="{ height: visible ? '100%' : 0 }">
   <div id="micro-app-container"></div>
+  <!--   测试 Drawer 和 Modal     -->
+  <div>
+    <div>
+      <a-button type="primary" @click="drawerVisible = true">
+        【主应用】测试 Drawer 组件
+      </a-button>
+      <a-drawer
+          title="Basic Drawer"
+          placement="right"
+          :closable="false"
+          :visible="drawerVisible"
+          @close="drawerVisible = false"
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </a-drawer>
+    </div>
+    <div>
+      <a-button type="primary" @click="modalVisible = true">
+        【主应用】测试 Modal 组件
+      </a-button>
+      <a-modal
+          title="Basic Modal"
+          :closable="false"
+          :visible="modalVisible"
+          @cancel="modalVisible = false"
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </a-modal>
+    </div>
+  </div>
 </div>
 </template>
 
 <script>
 import { registerMicroApps, start } from 'qiankun'
+// 测试
+import { Button, Drawer, Modal } from 'ant-design-vue'
 
 export const microAppPrefix = 'micro-react-app';
 
@@ -15,6 +51,12 @@ export default {
     visible: {
       type: Boolean,
       defaultValue: false,
+    }
+  },
+  data() {
+    return {
+      drawerVisible: false,
+      modalVisible: false,
     }
   },
   mounted() {
@@ -27,14 +69,22 @@ export default {
       },
     ])
     start()
+  },
+  components: {
+    'a-button': Button,
+    'a-drawer': Drawer,
+    'a-modal': Modal,
   }
 }
 </script>
 
 <style lang="less" scoped>
 .container {
+  display: flex;
+  flex-direction: column;
+
   #micro-app-container {
-    height: 100%;
+    flex: 1;
   }
 }
 </style>

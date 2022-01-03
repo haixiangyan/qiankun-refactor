@@ -65,6 +65,12 @@ const { Item: MenuItem, SubMenu } = Menu;
 
 export default {
   name: 'App',
+  data() {
+    return {
+      collapsed: false,
+      microAppPrefix,
+    };
+  },
   components: {
     'a-icon': Icon,
     'a-layout': Layout,
@@ -75,12 +81,6 @@ export default {
     'a-menu-item': MenuItem,
     'a-sub-menu': SubMenu,
     'micro-app-container': Container,
-  },
-  data() {
-    return {
-      collapsed: false,
-      microAppPrefix,
-    };
   },
 }
 </script>

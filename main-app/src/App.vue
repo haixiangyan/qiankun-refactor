@@ -30,10 +30,10 @@
             <span>订单</span>
           </span>
           <a-menu-item key="orderList">
-            <router-link to="/order/list">订单列表</router-link>
+            <a :href="`/#/${microAppPrefix}/order/list`">订单列表</a>
           </a-menu-item>
           <a-menu-item key="orderDetails">
-            <router-link to="/order/details">订单详情</router-link>
+            <a :href="`/#/${microAppPrefix}/order/details`">订单详情</a>
           </a-menu-item>
         </a-sub-menu>
       </a-menu>
@@ -47,6 +47,9 @@
       </a-layout-header>
       <!--  页面    -->
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+        <!--   子应用容器     -->
+        <micro-app-container></micro-app-container>
+        <!--   主应用路由     -->
         <router-view/>
       </a-layout-content>
     </a-layout>
@@ -55,6 +58,7 @@
 
 <script>
 import { Layout, Menu, Icon } from 'ant-design-vue';
+import Container, { microAppPrefix } from "./components/Container";
 
 const { Header, Content, Sider } = Layout;
 const { Item: MenuItem, SubMenu } = Menu;
@@ -69,11 +73,13 @@ export default {
     'a-layout-content': Content,
     'a-menu': Menu,
     'a-menu-item': MenuItem,
-    'a-sub-menu': SubMenu
+    'a-sub-menu': SubMenu,
+    'micro-app-container': Container,
   },
   data() {
     return {
       collapsed: false,
+      microAppPrefix,
     };
   },
 }

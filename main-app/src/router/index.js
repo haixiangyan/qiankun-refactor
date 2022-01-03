@@ -2,10 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About'
-import OrderList from "../views/Order/List"
-import OrderDetails from '../views/Order/Details'
 import StaffList from '../views/Staff/List'
 import StaffClients from '../views/Staff/Clients'
+import Empty from "../components/Empty";
+import {microAppPrefix} from "../components/Container";
 
 Vue.use(VueRouter)
 
@@ -21,14 +21,14 @@ const routes = [
     component: About
   },
   {
-    path: '/order/list',
+    path: `/${microAppPrefix}/order/list`,
     name: 'OrderList',
-    component: OrderList,
+    component: Empty,
   },
   {
-    path: '/order/details',
+    path: `/${microAppPrefix}/order/details`,
     name: 'OrderDetails',
-    component: OrderDetails,
+    component: Empty,
   },
   {
     path: '/staff/list',

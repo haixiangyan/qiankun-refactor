@@ -1,6 +1,6 @@
 import {FC} from "react";
 import { Layout as AntLayout, Menu as AntMenu } from "antd";
-import styles from './styles.less';
+import styles from './styles.module.less';
 import {Link} from "react-router-dom";
 
 const { Sider: AntSider } = AntLayout;

@@ -67,6 +67,7 @@ export default {
   },
   mounted() {
     const { dispatch, commit, state } = this.$store;
+    console.log('xx', state);
     registerMicroApps([
       {
         name: 'microReactApp',

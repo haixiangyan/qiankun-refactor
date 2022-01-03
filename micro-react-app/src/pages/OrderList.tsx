@@ -17,9 +17,9 @@ const OrderList: FC = () => {
       </p>
 
       <div>
-        <p>主应用 Counter: {state.counter}</p>
-        <Button type="primary" onClick={() => commit('increment')}>【微应用】+1</Button>
-        <Button danger onClick={() => commit('decrement')}>【微应用】-1</Button>
+        <p>主应用 Counter: {state?.counter}</p>
+        <Button type="primary" onClick={() => commit?.('increment')}>【微应用】+1</Button>
+        <Button danger onClick={() => commit?.('decrement')}>【微应用】-1</Button>
       </div>
 
       <div>

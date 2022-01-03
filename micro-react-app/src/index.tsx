@@ -6,9 +6,20 @@ import App from './App';
 import {HashRouter} from "react-router-dom";
 import MicroAppContext from "./context/MicroAppContext";
 
-import 'antd/dist/antd.css';
+import 'antd/lib/style/themes/default.less';
+import 'antd/dist/antd.less';
+import {ConfigProvider} from "antd";
 
+// 微应用的路由 basename
 const basename= window.__POWERED_BY_QIANKUN__ ? '/micro-react-app' : '/';
+
+// 自定义前缀
+const prefixCls = 'cmsAnt';
+
+// 设置 Modal、Message、Notification rootPrefixCls
+ConfigProvider.config({
+  prefixCls,
+})
 
 // 渲染
 function render(props: any) {
@@ -17,11 +28,13 @@ function render(props: any) {
   const value = { state, commit, dispatch };
 
   const root = (
-    <HashRouter basename={basename}>
-      <MicroAppContext.Provider value={value}>
-        <App />
-      </MicroAppContext.Provider>
-    </HashRouter>
+    <ConfigProvider prefixCls={prefixCls}>
+      <HashRouter basename={basename}>
+        <MicroAppContext.Provider value={value}>
+          <App />
+        </MicroAppContext.Provider>
+      </HashRouter>
+    </ConfigProvider>
   );
 
   ReactDOM.render(root, container

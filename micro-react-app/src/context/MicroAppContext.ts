@@ -1,9 +1,9 @@
 import {createContext} from "react";
 
 interface MicroAppContextState {
-  state: any;
-  commit: Function;
-  dispatch: Function;
+  state?: any;
+  commit?: Function;
+  dispatch?: Function;
 }
 
 const initState: MicroAppContextState = {

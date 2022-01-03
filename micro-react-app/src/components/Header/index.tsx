@@ -1,5 +1,5 @@
 import { Layout as AntLayout } from "antd";
-import styles from './styles.less';
+import styles from './styles.module.less';
 
 const { Header: AntHeader } = AntLayout;
 

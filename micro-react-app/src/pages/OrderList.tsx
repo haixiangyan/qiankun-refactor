@@ -8,8 +8,8 @@ const OrderList: FC = () => {
 
   return (
     <div>
-      <h1>【微应用】订单列表</h1>
-      <p>
+      <h1 className="title">【微应用】订单列表</h1>
+      <p className="content">
         <Link to="/order/details">点击查看订单详情</Link>
       </p>
 

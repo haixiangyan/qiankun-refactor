@@ -6,34 +6,34 @@
       <a-menu theme="dark" mode="inline" :default-selected-keys="['home']">
         <a-menu-item key="home">
           <router-link to="/">
-            <span>首页</span>
+            <span>【主应用】首页</span>
           </router-link>
         </a-menu-item>
         <a-menu-item key="about">
           <router-link to="/about">
-            <span>关于</span>
+            <span>【主应用】关于</span>
           </router-link>
         </a-menu-item>
         <a-sub-menu key="staff">
           <span slot="title">
-            <span>员工</span>
+            <span>【主应用】员工</span>
           </span>
           <a-menu-item key="staffList">
-            <router-link to="/staff/list">员工列表</router-link>
+            <router-link to="/staff/list">【主应用】员工列表</router-link>
           </a-menu-item>
           <a-menu-item key="staffClients">
-            <router-link to="/staff/clients">顾客列表</router-link>
+            <router-link to="/staff/clients">【主应用】顾客列表</router-link>
           </a-menu-item>
         </a-sub-menu>
         <a-sub-menu key="order">
           <span slot="title">
-            <span>订单</span>
+            <span>【微应用】订单</span>
           </span>
           <a-menu-item key="orderList">
-            <a :href="`/#/${microAppPrefix}/order/list`">订单列表</a>
+            <a :href="`/#/${microAppPrefix}/order/list`">【微应用】订单列表</a>
           </a-menu-item>
           <a-menu-item key="orderDetails">
-            <a :href="`/#/${microAppPrefix}/order/details`">订单详情</a>
+            <a :href="`/#/${microAppPrefix}/order/details`">【微应用】订单详情</a>
           </a-menu-item>
         </a-sub-menu>
       </a-menu>

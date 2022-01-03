@@ -74,3 +74,9 @@ declare module '*.less' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
+
+// 全局 ts 类型
+declare interface Window {
+  __POWERED_BY_QIANKUN__?: boolean; // 是否作为微应用被引入
+  __INJECTED_PUBLIC_PATH_BY_QIANKUN__?: string; // 注入的 public path
+}

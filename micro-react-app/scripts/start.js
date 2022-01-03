@@ -67,6 +67,7 @@ if (process.env.HOST) {
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+const {updateOutput, updateDevServer} = require("./microApp");
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
     // We attempt to use the default port but if it is busy, we offer the user to
@@ -82,6 +83,9 @@ checkBrowsers(paths.appPath, isInteractive)
     const config = configFactory('development');
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
+
+    // 更新 qiankun 的 webpack 配置
+    updateOutput(config);
 
     const useTypeScript = fs.existsSync(paths.appTsConfig);
     const urls = prepareUrls(
@@ -113,6 +117,8 @@ checkBrowsers(paths.appPath, isInteractive)
       port,
     };
     const devServer = new WebpackDevServer(serverConfig, compiler);
+    // 更新 dev server 内容
+    updateDevServer(devServer);
     // Launch WebpackDevServer.
     devServer.startCallback(() => {
       if (isInteractive) {

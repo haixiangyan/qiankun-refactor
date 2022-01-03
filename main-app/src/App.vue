@@ -44,6 +44,9 @@
       <!--  头部    -->
       <a-layout-header style="background: #fff; padding: 0">
         <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="() => (collapsed = !collapsed)" />
+        <span>全局 Counter: {{counter}}</span>
+        <a-button type="primary" @click="$store.commit('increment')">+1</a-button>
+        <a-button type="danger" @click="$store.commit('decrement')">-1</a-button>
       </a-layout-header>
       <!--  页面    -->
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
@@ -57,7 +60,7 @@
 </template>
 
 <script>
-import { Layout, Menu, Icon } from 'ant-design-vue';
+import { Layout, Menu, Icon, Button } from 'ant-design-vue';
 import Container, { microAppPrefix } from "./components/Container";
 
 const { Header, Content, Sider } = Layout;
@@ -71,7 +74,13 @@ export default {
       microAppPrefix,
     };
   },
+  computed: {
+    counter() {
+      return this.$store.state.counter
+    }
+  },
   components: {
+    'a-button': Button,
     'a-icon': Icon,
     'a-layout': Layout,
     'a-layout-sider': Sider,

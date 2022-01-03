@@ -3,21 +3,27 @@ import './public-path';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {HashRouter} from "react-router-dom";
+import MicroAppContext from "./context/MicroAppContext";
 
 import 'antd/dist/antd.css';
-import {HashRouter} from "react-router-dom";
 
 const basename= window.__POWERED_BY_QIANKUN__ ? '/micro-react-app' : '/';
 
-const root = (
-  <HashRouter basename={basename}>
-    <App />
-  </HashRouter>
-);
-
 // 渲染
 function render(props: any) {
-  const { container } = props;
+  const { container, state, commit, dispatch } = props;
+
+  const value = { state, commit, dispatch };
+
+  const root = (
+    <HashRouter basename={basename}>
+      <MicroAppContext.Provider value={value}>
+        <App />
+      </MicroAppContext.Provider>
+    </HashRouter>
+  );
+
   ReactDOM.render(root, container
     ? container.querySelector('#root')
     : document.querySelector('#root'));
@@ -35,6 +41,10 @@ export async function bootstrap() {
 
 export async function mount(props: any) {
   console.log('[micro-react-app] mount', props);
+  props.onGlobalStateChange((state: any) => {
+    console.log('[micro-react-app] vuex 状态更新')
+    render(state);
+  })
   render(props);
 }
 

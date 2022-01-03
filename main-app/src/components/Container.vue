@@ -39,11 +39,17 @@
 </template>
 
 <script>
-import { registerMicroApps, start } from 'qiankun'
+import {initGlobalState, registerMicroApps, start} from 'qiankun'
 // 测试
 import { Button, Drawer, Modal } from 'ant-design-vue'
 
 export const microAppPrefix = 'micro-react-app';
+
+const globalActions = initGlobalState({
+  state: {},
+  commit: null,
+  dispatch: null,
+});
 
 export default {
   name: "Container",
@@ -60,15 +66,30 @@ export default {
     }
   },
   mounted() {
+    const { dispatch, commit, state } = this.$store;
     registerMicroApps([
       {
         name: 'microReactApp',
         entry: '//localhost:3000',
         container: '#micro-app-container',
         activeRule: '/#/micro-react-app',
+        props: {
+          state,
+          dispatch,
+          commit,
+        }
       },
     ])
     start()
+
+    this.$store.watch((state) => {
+      console.log('state', state);
+      globalActions.setGlobalState({
+        state,
+        commit,
+        dispatch
+      });
+    })
   },
   components: {
     'a-button': Button,

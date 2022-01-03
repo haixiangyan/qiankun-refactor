@@ -1,8 +1,11 @@
-import {FC, useState} from "react";
+import {FC, useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {Button, Drawer, Modal} from "antd";
+import MicroAppContext from "../context/MicroAppContext";
 
 const OrderList: FC = () => {
+  const { state, commit } = useContext(MicroAppContext);
+
   const [drawerVisible, setDrawerVisible] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -12,6 +15,12 @@ const OrderList: FC = () => {
       <p className="content">
         <Link to="/order/details">点击查看订单详情</Link>
       </p>
+
+      <div>
+        <p>主应用 Counter: {state.counter}</p>
+        <Button type="primary" onClick={() => commit('increment')}>【微应用】+1</Button>
+        <Button danger onClick={() => commit('decrement')}>【微应用】-1</Button>
+      </div>
 
       <div>
         <Button type="primary" onClick={() => setDrawerVisible(true)}>

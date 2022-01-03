@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>员工的客户列表</h1>
+  <h1>【主应用】员工的客户列表</h1>
   <p>
     <router-link to="/staff/list">返回列表</router-link>
   </p>

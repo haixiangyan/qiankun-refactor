@@ -7,13 +7,7 @@ const { Content: AntContent } = AntLayout;
 
 const Content = () => {
   return (
-    <AntContent
-      style={{
-        margin: '24px 16px',
-        padding: 24,
-        minHeight: 280,
-      }}
-    >
+    <AntContent>
       <Routes>
         <Route path="/" element={<span>首页</span>} />
         <Route path="/order/list" element={<OrderList />} />

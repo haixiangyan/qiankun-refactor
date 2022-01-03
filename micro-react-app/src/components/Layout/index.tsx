@@ -5,7 +5,7 @@ import Header from "../Header";
 import Content from "../Content";
 import styles from './styles.less';
 
-const Layout: FC = () => {
+export const StandaloneLayout: FC = () => {
   return (
     <AntLayout className={styles.layout}>
       <Sider/>
@@ -17,5 +17,9 @@ const Layout: FC = () => {
   )
 }
 
-export default Layout;
+export const MicroAppLayout = () => {
+  return (
+    <Content />
+  )
+}
 

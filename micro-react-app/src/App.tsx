@@ -1,9 +1,11 @@
 import React from 'react';
-import Layout from "./components/Layout";
+import { StandaloneLayout, MicroAppLayout } from "./components/Layout";
+
+const Layout = window.__POWERED_BY_QIANKUN__ ? MicroAppLayout : StandaloneLayout;
 
 function App() {
   return (
-    <Layout />
+    <Layout/>
   );
 }
 

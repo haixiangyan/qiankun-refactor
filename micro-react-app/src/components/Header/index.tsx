@@ -1,10 +1,11 @@
 import { Layout as AntLayout } from "antd";
+import styles from './styles.less';
 
 const { Header: AntHeader } = AntLayout;
 
 const Header = () => {
   return (
-    <AntHeader className="site-layout-background" style={{ padding: 0 }}>
+    <AntHeader className={styles.header}>
       Header
     </AntHeader>
   )

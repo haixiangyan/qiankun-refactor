@@ -1,12 +1,15 @@
 import {FC} from "react";
 import { Layout as AntLayout, Menu as AntMenu } from "antd";
+import styles from './styles.less';
 
 const { Sider: AntSider } = AntLayout;
 
 const Sider: FC = () => {
   return (
     <AntSider trigger={null} collapsible>
-      <div className="logo" />
+      <div className={styles.logo} >
+        My Logo
+      </div>
       <AntMenu theme="dark" mode="inline" defaultSelectedKeys={['orderList']}>
         <AntMenu.Item key="orderList">
           订单列表

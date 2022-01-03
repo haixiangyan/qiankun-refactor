@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-      loading: true,
+      loading: false,
       drawerVisible: false,
       modalVisible: false,
     }

@@ -2,6 +2,8 @@
 
 ## 如何使用
 
+### 主应用
+
 Vue + vue-router + vuex + vue-cli + ant-design-vue + less。
 
 ```shell
